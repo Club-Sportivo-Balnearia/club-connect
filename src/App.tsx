@@ -7,6 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import Index from "./pages/Index";
 import Inicio from "./pages/Inicio";
 import Admin from "./pages/Admin";
+import FutbolPage from "./pages/Futbol";
+import { DeportePage } from "./pages/DeportePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +29,11 @@ const App = () => (
                 <Routes>
                   <Route path="/inicio" element={<Inicio />} />
                   <Route path="/admin" element={<Admin />} />
+                  <Route path="/futbol/:sub" element={<FutbolPage />} />
+                  <Route path="/voley" element={<DeportePage deporte="voley" />} />
+                  <Route path="/patin" element={<DeportePage deporte="patin" />} />
+                  <Route path="/basquet" element={<DeportePage deporte="basquet" />} />
+                  <Route path="/padel" element={<DeportePage deporte="padel" />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </>
