@@ -1,12 +1,7 @@
+import { NewsFeed } from "@/components/NewsFeed";
+
 const Inicio = () => {
-  return (
-    <div className="mx-auto max-w-7xl px-4 py-12">
-      <h1 className="mb-4 text-4xl font-bold">Bienvenido al Club</h1>
-      <p className="text-lg text-muted-foreground">
-        Explora las secciones del menú para conocer todas las disciplinas deportivas.
-      </p>
-    </div>
-  );
+  return <NewsFeed title="Últimas Noticias" subtitle="Todas las novedades del club deportivo" />;
 };
 
 export default Inicio;
