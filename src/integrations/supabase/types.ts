@@ -32,6 +32,39 @@ export type Database = {
         }
         Relationships: []
       }
+      publicaciones: {
+        Row: {
+          categoria: string
+          descripcion: string | null
+          fecha: string
+          id: string
+          imagen_url: string | null
+          titulo: string
+          user_id: string
+          video_url: string | null
+        }
+        Insert: {
+          categoria: string
+          descripcion?: string | null
+          fecha?: string
+          id?: string
+          imagen_url?: string | null
+          titulo: string
+          user_id: string
+          video_url?: string | null
+        }
+        Update: {
+          categoria?: string
+          descripcion?: string | null
+          fecha?: string
+          id?: string
+          imagen_url?: string | null
+          titulo?: string
+          user_id?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           id: string
