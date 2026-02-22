@@ -65,7 +65,7 @@ const AuthPage = () => {
   return (
     <div
       className="relative flex min-h-screen items-center justify-center bg-cover bg-center px-4"
-      style={{ backgroundImage: "url('/fondo_de_pagina.png')" }}
+      style={{ backgroundImage: "url('/fondo_de_sportivo.png')" }}
     >
       {/* Overlay oscuro */}
       <div className="absolute inset-0 bg-black/60" />
