@@ -1,8 +1,10 @@
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { Badge } from "@/components/ui/badge";
+import { CommentsSection } from "@/components/CommentsSection";
 
 interface PostCardProps {
+  id: string;
   titulo: string;
   descripcion: string | null;
   categoria: string;
@@ -18,7 +20,7 @@ function getYouTubeId(url: string) {
   return match?.[1] ?? null;
 }
 
-export function PostCard({ titulo, descripcion, categoria, imagen_url, video_url, fecha }: PostCardProps) {
+export function PostCard({ id, titulo, descripcion, categoria, imagen_url, video_url, fecha }: PostCardProps) {
   const ytId = video_url ? getYouTubeId(video_url) : null;
 
   return (
@@ -58,6 +60,9 @@ export function PostCard({ titulo, descripcion, categoria, imagen_url, video_url
           <p className="text-sm text-muted-foreground line-clamp-3">{descripcion}</p>
         )}
       </div>
+
+      {/* Comments */}
+      <CommentsSection publicacionId={id} />
     </article>
   );
 }
