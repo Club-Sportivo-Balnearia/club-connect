@@ -14,6 +14,38 @@ export type Database = {
   }
   public: {
     Tables: {
+      comentarios: {
+        Row: {
+          contenido: string
+          created_at: string
+          id: string
+          publicacion_id: string
+          user_id: string
+        }
+        Insert: {
+          contenido: string
+          created_at?: string
+          id?: string
+          publicacion_id: string
+          user_id: string
+        }
+        Update: {
+          contenido?: string
+          created_at?: string
+          id?: string
+          publicacion_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comentarios_publicacion_id_fkey"
+            columns: ["publicacion_id"]
+            isOneToOne: false
+            referencedRelation: "publicaciones"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           created_at: string
