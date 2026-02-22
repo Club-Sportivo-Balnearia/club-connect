@@ -8,9 +8,10 @@ interface NewsFeedProps {
   categoria?: string;
   title: string;
   subtitle?: string;
+  logoSrc?: string;
 }
 
-export function NewsFeed({ categoria, title, subtitle }: NewsFeedProps) {
+export function NewsFeed({ categoria, title, subtitle, logoSrc }: NewsFeedProps) {
   const { data: posts, isLoading } = useQuery({
     queryKey: ["publicaciones", categoria],
     queryFn: async () => {
@@ -32,7 +33,12 @@ export function NewsFeed({ categoria, title, subtitle }: NewsFeedProps) {
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold">{title}</h1>
+        <div className="flex items-center gap-3">
+          {logoSrc && (
+            <img src={logoSrc} alt={title} className="h-12 w-12 object-contain rounded" />
+          )}
+          <h1 className="text-3xl font-bold">{title}</h1>
+        </div>
         {subtitle && <p className="mt-1 text-muted-foreground">{subtitle}</p>}
       </div>
 
