@@ -57,7 +57,10 @@ export function PostCard({ id, titulo, descripcion, categoria, imagen_url, video
         </div>
         <h3 className="text-lg font-semibold leading-tight">{titulo}</h3>
         {descripcion && (
-          <p className="text-sm text-muted-foreground line-clamp-3">{descripcion}</p>
+          <div
+            className="prose prose-sm dark:prose-invert max-w-none text-muted-foreground"
+            dangerouslySetInnerHTML={{ __html: descripcion }}
+          />
         )}
       </div>
 

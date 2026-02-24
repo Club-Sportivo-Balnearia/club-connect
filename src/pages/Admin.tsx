@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { Navigate } from "react-router-dom";
 import { Shield, Upload, Video, Link as LinkIcon, X, Loader2, Users, Newspaper } from "lucide-react";
+import { RichTextEditor } from "@/components/RichTextEditor";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -87,6 +87,11 @@ const Admin = () => {
   const handlePublish = async () => {
     if (!titulo.trim() || !categoria) {
       toast({ title: "Error", description: "Título y categoría son obligatorios.", variant: "destructive" });
+      return;
+    }
+    const emptyContent = !descripcion.trim() || descripcion === "<p></p>";
+    if (emptyContent) {
+      toast({ title: "Error", description: "La noticia debe tener contenido.", variant: "destructive" });
       return;
     }
 
@@ -182,15 +187,13 @@ const Admin = () => {
               />
             </div>
 
-            {/* Descripción */}
+            {/* Contenido rico */}
             <div className="space-y-2">
-              <Label htmlFor="descripcion">Texto</Label>
-              <Textarea
-                id="descripcion"
+              <Label>Contenido</Label>
+              <RichTextEditor
+                content={descripcion}
+                onChange={setDescripcion}
                 placeholder="Escribe el cuerpo de la noticia..."
-                rows={6}
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
               />
             </div>
 
